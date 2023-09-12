@@ -6,7 +6,7 @@
 
 NAME="network-r8168"
 INFO="RealTek RTL-8168 Gigabit Ethernet driver"
-VERSION="2016.04.20"
+VERSION="2023.09.12"
 FREEDRIVER="true"
 PRIORITY="0"
 
@@ -30,7 +30,7 @@ post_remove()
 {
 	if [ -e "${MODULESBLACKLIST}" ]; then
 		rm "${MODULESBLACKLIST}"
+		modprobe -r r8168
+		modprobe r8169
 	fi
-
-	modprobe -r r8169
 }
