@@ -2,7 +2,7 @@
 
 NAME="video-nvidia"
 INFO="Closed source NVIDIA drivers for linux."
-VERSION="2023.03.23"
+VERSION="2024.05.03"
 FREEDRIVER="false"
 PRIORITY="5"
 
@@ -24,7 +24,7 @@ DEPENDS_64="lib32-nvidia-utils"
 DEPKMOD="nvidia"
 
 XORGFILE="/etc/X11/mhwd.d/nvidia.conf"
-MHWDGPU_BLCKLSTNVIDIA="/etc/modprobe.d/mhwd-gpu.conf"
+MHWDGPU_MODOPTNVIDIA="/etc/modprobe.d/mhwd-gpu.conf"
 MHWDGPU_MODLDNVIDIA="/etc/modules-load.d/mhwd-gpu.conf"
 
 fix_screen_flickering()
@@ -47,13 +47,14 @@ post_install()
 
 	# Without this 'glxgears' don't work in live-session
 	MODULES_LOAD="/etc/modules-load.d"
-	echo "nvidia-drm" >> "${MODULES_LOAD}/mhwd-gpu.conf"
+	echo "nvidia_drm" >> "${MODULES_LOAD}/mhwd-gpu.conf"
 	if [ ! "$(pgrep X)" ];	then
-		modprobe nvidia-drm
+		modprobe nvidia_drm
 	fi
+
+	# Enable Modeset for Nvidia driver
+	echo "options nvidia_drm modeset=1" >> "${MHWDGPU_MODOPTNVIDIA}"
 }
-
-
 
 post_remove()
 {
@@ -61,11 +62,8 @@ post_remove()
 		rm "${XORGFILE}"
 	fi
 
-	if [ -f "${MHWDGPU_BLCKLSTNVIDIA}" ]; then
-		sed -i '/^blacklist nouveau/d' "${MHWDGPU_BLCKLSTNVIDIA}"
-		sed -i '/^blacklist ttm/d' "${MHWDGPU_BLCKLSTNVIDIA}"
-		sed -i '/^blacklist drm_kms_helper/d' "${MHWDGPU_BLCKLSTNVIDIA}"
-		sed -i '/^blacklist drm/d' "${MHWDGPU_BLCKLSTNVIDIA}"
+	if [ -f "${MHWDGPU_MODOPTNVIDIA}" ]; then
+		rm "${MHWDGPU_MODOPTNVIDIA}"
 	fi
 
 	if [ -f "${MHWDGPU_MODLDNVIDIA}" ]; then
@@ -74,4 +72,3 @@ post_remove()
 
 	mhwd-gpu --check
 }
-
