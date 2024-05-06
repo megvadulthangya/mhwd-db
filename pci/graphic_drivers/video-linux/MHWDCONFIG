@@ -2,7 +2,7 @@
 
 NAME="video-linux"
 INFO="Standard open source drivers."
-VERSION="2018.05.04"
+VERSION="2024.05.06"
 FREEDRIVER="true"
 PRIORITY="2"
 
@@ -22,12 +22,14 @@ DEPENDS="xf86-video-ati
     xf86-video-intel
     xf86-video-nouveau
     vulkan-intel
+    vulkan-nouveau
     vulkan-radeon
     libva-mesa-driver
     libva-vdpau-driver
     mesa-vdpau"
 
 DEPENDS_64="lib32-vulkan-intel
+    lib32-vulkan-nouveau
     lib32-vulkan-radeon
     lib32-libva-vdpau-driver
     lib32-mesa-vdpau"
