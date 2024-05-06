@@ -2,7 +2,7 @@
 
 NAME="video-virtualmachine"
 INFO="X.org vmware video driver and open-vm-tools/virtualbox tools"
-VERSION="2021.07.26"
+VERSION="2024.05.06"
 FREEDRIVER="true"
 PRIORITY="2"
 
@@ -47,7 +47,7 @@ post_install()
 			# Not virtualbox or vmware. Start spice-vdagentd.socket to auto detect if spice is in use. Otherwise, do nothing.
 			systemctl enable --now --no-block spice-vdagentd.socket
 			systemctl enable --now --no-block qemu-guest-agent.service
-			sed -i 's/MODULES=.*/MODULES=(qxl bochs_drm virtio-gpu virtio virtio_scsi virtio_blk virtio_pci virtio_net virtio_ring)/g' /etc/mkinitcpio.conf
+			sed -i 's/MODULES=.*/MODULES=(qxl virtio-gpu virtio virtio_scsi virtio_blk virtio_pci virtio_net virtio_ring)/g' /etc/mkinitcpio.conf
 			mkinitcpio -P
 		fi
 	fi
