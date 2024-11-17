@@ -24,15 +24,11 @@ DEPENDS="xf86-video-ati
     vulkan-intel
     vulkan-nouveau
     vulkan-radeon
-    libva-mesa-driver
-    libva-vdpau-driver
-    mesa-vdpau"
+    libva-mesa-driver"
 
 DEPENDS_64="lib32-vulkan-intel
     lib32-vulkan-nouveau
-    lib32-vulkan-radeon
-    lib32-libva-vdpau-driver
-    lib32-mesa-vdpau"
+    lib32-vulkan-radeon"
 
 
 post_install()
