@@ -23,8 +23,7 @@ DEPENDS="xf86-video-ati
     xf86-video-nouveau
     vulkan-intel
     vulkan-nouveau
-    vulkan-radeon
-    libva-mesa-driver"
+    vulkan-radeon"
 
 DEPENDS_64="lib32-vulkan-intel
     lib32-vulkan-nouveau
