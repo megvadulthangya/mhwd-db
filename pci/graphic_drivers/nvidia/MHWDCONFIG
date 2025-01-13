@@ -2,7 +2,7 @@
 
 NAME="video-nvidia"
 INFO="Closed source NVIDIA drivers for linux."
-VERSION="2024.05.03"
+VERSION="2025.01.13"
 FREEDRIVER="false"
 PRIORITY="5"
 
@@ -22,6 +22,7 @@ MHWDCONFLICTS="video*nvidia*"
 DEPENDS="nvidia-utils nvidia-settings libxnvctrl"
 DEPENDS_64="lib32-nvidia-utils"
 DEPKMOD="nvidia"
+[[ "$(nvidia-recommended-driver)" == "open" ]] && DEPKMOD="nvidia-open"
 
 XORGFILE="/etc/X11/mhwd.d/nvidia.conf"
 MHWDGPU_MODOPTNVIDIA="/etc/modprobe.d/mhwd-gpu.conf"

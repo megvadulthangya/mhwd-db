@@ -2,7 +2,7 @@
 
 NAME="video-hybrid-amd-nvidia-prime"
 INFO="Hybrid prime solution for NVIDIA Optimus Technology - Closed source NVIDIA driver & open source amd driver."
-VERSION="2023.03.23"
+VERSION="2025.01.13"
 FREEDRIVER="false"
 PRIORITY="8"
 
@@ -29,6 +29,7 @@ MHWDDEPENDS="video-linux"
 DEPENDS="nvidia-utils nvidia-settings libxnvctrl nvidia-prime"
 DEPENDS_64="lib32-nvidia-utils"
 DEPKMOD="nvidia"
+[[ "$(nvidia-recommended-driver)" == "open" ]] && DEPKMOD="nvidia-open"
 
 XORGFILE="/etc/X11/mhwd.d/nvidia.conf"
 UDEVFILE="/etc/udev/rules.d/90-mhwd-prime-powermanagement.rules"
