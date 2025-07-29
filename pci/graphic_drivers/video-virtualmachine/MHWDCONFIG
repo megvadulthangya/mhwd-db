@@ -1,8 +1,8 @@
 # mhwd Driver Config
 
 NAME="video-virtualmachine"
-INFO="X.org vmware video driver and open-vm-tools/virtualbox tools"
-VERSION="2024.05.06"
+INFO="X.org virtual machine support and open-vm-tools/virtualbox tools"
+VERSION="2025.07.24"
 FREEDRIVER="true"
 PRIORITY="2"
 
