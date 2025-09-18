@@ -18,7 +18,7 @@ DEVICEIDS="*"
 BLACKLISTEDDEVICEIDS="0be1 8108"
 
 # Conflicts
-CONFLICTS="nvidia-470x-utils nvidia-470xx-settings libxnvctrl-470xx nvidia-570x-utils nvidia-570xx-settings libxnvctrl-570xx nvidia-575x-utils nvidia-575xx-settings libxnvctrl-575x nvidia-utils nvidia-settings libxnvctrl"
+CONFLICTS="nvidia-470x-utils nvidia-470xx-settings libxnvctrl-470xx nvidia-570xx-utils nvidia-570xx-settings libxnvctrl-570xx nvidia-575xx-utils nvidia-575xx-settings libxnvctrl-575xx nvidia-utils nvidia-settings libxnvctrl"
 CONFLICTS_64="lib32-nvidia-470xx-utils lib32-nvidia-570xx-utils lib32-nvidia-575xx-utils lib32-nvidia-utils"
 CONKMOD="nvidia-470xx nvidia-570xx nvidia-575xx nvidia"
 
