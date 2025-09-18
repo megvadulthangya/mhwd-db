@@ -8,7 +8,7 @@ PRIORITY="5"
 
 CLASSIDS="0300 0302"
 VENDORIDS="10de"
-DEVICEIDS=">/var/lib/mhwd/ids/pci/nvidia.ids"
+DEVICEIDS=">/var/lib/mhwd/ids/pci/nvidia-570xx.ids"
 
 # Conflicts
 CONFLICTS="nvidia-390xx-utils nvidia-390xx-settings libxnvctrl-390xx nvidia-470xx-utils nvidia-470xx-settings libxnvctrl-470xx nvidia-575xx-utils nvidia-575xx-settings libxnvctrl-575xx nvidia-utils nvidia-settings libxnvctrl"
