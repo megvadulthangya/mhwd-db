@@ -14,7 +14,7 @@ DEVICEIDS=">/var/lib/mhwd/ids/pci/nvidia-575xx.ids"
 CONFLICTS="nvidia-390xx-utils nvidia-390xx-settings libxnvctrl-390xx nvidia-470xx-utils nvidia-470xx-settings libxnvctrl-470xx nvidia-570xx-utils nvidia-570xx-settings libxnvctrl-570xx nvidia-utils nvidia-settings"
 CONFLICTS_64="lib32-nvidia-390xx-utils lib32-nvidia-470xx-utils lib32-nvidia-570xx-utils lib32-nvidia-utils"
 CONKMOD="nvidia-390xx nvidia-470xx nvidia-570xx nvidia"
-[[ "$(nvidia-recommended-driver)" == "open" ]] && CONKMOD+="nvidia-575xx"
+[[ "$(nvidia-recommended-driver)" == "open" ]] && CONKMOD+=" nvidia-575xx"
 
 # Conflicts with other mhwd configs
 MHWDCONFLICTS="video*nvidia*"
