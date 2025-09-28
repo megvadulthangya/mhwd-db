@@ -20,7 +20,7 @@ CONKMOD="nvidia-390xx nvidia-470xx nvidia-570xx nvidia-575xx"
 MHWDCONFLICTS="video*nvidia*"
 
 # Dependencies
-DEPENDS="nvidia-utils nvidia-settings libxnvctrl"
+DEPENDS="nvidia-utils nvidia-settings"
 DEPENDS_64="lib32-nvidia-utils"
 DEPKMOD="nvidia"
 [[ "$(nvidia-recommended-driver)" == "open" ]] && DEPKMOD="nvidia-open"
