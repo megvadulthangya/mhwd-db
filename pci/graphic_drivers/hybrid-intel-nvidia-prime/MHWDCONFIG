@@ -2,7 +2,7 @@
 
 NAME="video-hybrid-intel-nvidia-prime"
 INFO="Hybrid prime solution for NVIDIA Optimus Technology - Closed source NVIDIA driver & open source intel driver."
-VERSION="2025.09.28"
+VERSION="2025.09.29"
 FREEDRIVER="false"
 PRIORITY="12"
 
@@ -21,6 +21,7 @@ BLACKLISTEDDEVICEIDS="0be1 8108"
 CONFLICTS="nvidia-390x-utils nvidia-390xx-settings libxnvctrl-390xx nvidia-470xx-utils nvidia-470xx-settings libxnvctrl-470xx nvidia-570x-utils nvidia-570xx-settings nvidia-575xx-utils nvidia-575xx-settings"
 CONFLICTS_64="lib32-nvidia-390xx-utils lib32-nvidia-470xx-utils lib32-nvidia-570xx-utils lib32-nvidia-575xx-utils"
 CONKMOD="nvidia-390xx nvidia-470xx nvidia-570xx nvidia-575xx"
+[[ "$(nvidia-recommended-driver)" == "open" ]] && CONKMOD+="nvidia"
 
 # Conflicts with other mhwd configs
 MHWDCONFLICTS="video*nvidia*"
