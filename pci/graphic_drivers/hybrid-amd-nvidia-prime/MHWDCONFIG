@@ -27,7 +27,7 @@ MHWDCONFLICTS="video*nvidia*"
 MHWDDEPENDS="video-linux"
 
 # Dependencies (nvidia-prime dependency is technically optional, but adds the prime-run command)
-DEPENDS="nvidia-utils nvidia-settingsnvidia-prime"
+DEPENDS="nvidia-utils nvidia-settings nvidia-prime"
 DEPENDS_64="lib32-nvidia-utils"
 DEPKMOD="nvidia"
 [[ "$(nvidia-recommended-driver)" == "open" ]] && DEPKMOD="nvidia-open"
