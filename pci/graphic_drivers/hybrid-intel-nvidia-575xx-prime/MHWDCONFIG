@@ -1,6 +1,6 @@
 # mhwd Driver Config
 
-NAME="video-hybrid-intel-nvidia-prime"
+NAME="video-hybrid-intel-nvidia-575xx-prime"
 INFO="Hybrid prime solution for NVIDIA Optimus Technology - Closed source NVIDIA driver & open source intel driver."
 VERSION="2025.12.29"
 FREEDRIVER="false"
