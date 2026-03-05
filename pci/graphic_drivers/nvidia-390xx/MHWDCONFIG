@@ -11,7 +11,7 @@ VENDORIDS="10de"
 DEVICEIDS=">/var/lib/mhwd/ids/pci/nvidia-390xx.ids"
 
 # Conflicts
-CONFLICTS="nvidia-utils nvidia-settingsnvidia-470xx-utils nvidia-470xx-settings libxnvctrl-470xx"
+CONFLICTS="nvidia-utils nvidia-settings nvidia-470xx-utils nvidia-470xx-settings libxnvctrl-470xx"
 CONFLICTS_64="lib32-nvidia-utils lib32-nvidia-470xx-utils"
 CONKMOD="nvidia nvidia-470xx"
 
