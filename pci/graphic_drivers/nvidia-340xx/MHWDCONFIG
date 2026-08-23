@@ -11,15 +11,15 @@ VENDORIDS="10de"
 DEVICEIDS=">/var/lib/mhwd/ids/pci/nvidia-340xx.ids"
 
 # Conflicts
-CONFLICTS="nvidia-utils nvidia-settings nvidia-390xx-utils nvidia-390xx-settings libxnvctrl-390xx nvidia-470xx-utils nvidia-470xx-settings libxnvctrl-470xx nvidia-570xx-utils nvidia-570xx-settings nvidia-575xx-utils nvidia-575xx-settings"
-CONFLICTS_64="lib32-nvidia-utils lib32-nvidia-390xx-utils lib32-nvidia-470xx-utils lib32-nvidia-570xx-utils lib32-nvidia-575xx-utils"
-CONKMOD="nvidia nvidia-390xx nvidia-470xx nvidia-570xx nvidia-575xx"
+CONFLICTS="nvidia-utils nvidia-settings nvidia-390xx-utils nvidia-390xx-settings libxnvctrl-390xx nvidia-470xx-utils nvidia-470xx-settings libxnvctrl-470xx nvidia-580xx-utils nvidia-580xx-settings"
+CONFLICTS_64="lib32-nvidia-utils lib32-nvidia-390xx-utils lib32-nvidia-470xx-utils lib32-nvidia-580xx-utils"
+CONKMOD="nvidia nvidia-390xx nvidia-470xx nvidia-580xx"
 
 # Conflicts with other mhwd configs
 MHWDCONFLICTS="video*nvidia*"
 
 # Dependencies
-DEPENDS="nvidia-340xx-utils"
+DEPENDS="nvidia-340xx-utils nvidia-340xx-settings libxnvctrl-340xx"
 DEPENDS_64="lib32-nvidia-340xx-utils"
 DEPKMOD="nvidia-340xx"
 
