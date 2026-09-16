@@ -1,8 +1,8 @@
-name: Sync master from Manjaro GitLab (safe)
+name: Sync master and 580 from Manjaro Forgejo
 
 on:
   schedule:
-    - cron: '0 5 * * *'
+    - cron: '0 5 * * *'   # naponta 05:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -12,27 +12,47 @@ jobs:
   sync:
     runs-on: ubuntu-latest
 
+    env:
+      GIT_HTTP_TIMEOUT: 300
+      GIT_HTTP_LOW_SPEED_LIMIT: 500
+      GIT_HTTP_LOW_SPEED_TIME: 60
+
     steps:
       - name: Checkout GitHub repo
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
-      - name: Add GitLab remote
+      - name: Add Forgejo remote
         run: |
-          git remote add gitlab https://gitlab.manjaro.org/applications/mhwd-db.git || true
-          git fetch gitlab
+          git remote remove forgejo 2>/dev/null || true
+          git remote add forgejo https://code.manjaro.org/applications/mhwd-db.git
+
+      - name: Fetch Forgejo with retry
+        uses: nick-fields/retry@v4
+        with:
+          timeout_minutes: 5
+          max_attempts: 100
+          retry_wait_seconds: 30
+          command: git fetch forgejo
 
       - name: Configure git user
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Merge GitLab master into GitHub master
+      - name: Sync master branch
         run: |
           git checkout -B master origin/master
-          git merge gitlab/master --no-edit || true
-
-      - name: Push changes to GitHub
-        run: |
+          git merge forgejo/master --no-edit || true
           git push origin master
+
+      - name: Sync 580 branch (create if missing)
+        run: |
+          if git ls-remote --heads origin 580 | grep -q 580; then
+            git checkout -B 580 origin/580
+          else
+            git checkout -B 580 forgejo/580
+          fi
+          git merge forgejo/580 --no-edit || true
+          git push origin 580
