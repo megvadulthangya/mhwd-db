@@ -1,15 +1,15 @@
 # mhwd Driver Config
 
-NAME="video-hybrid-amd-nvidia-575xx-prime"
+NAME="video-hybrid-amd-nvidia-580xx-prime"
 INFO="Hybrid prime solution for NVIDIA Optimus Technology - Closed source NVIDIA driver & open source amd driver."
-VERSION="2025.12.29"
+VERSION="2026.03.05"
 FREEDRIVER="false"
-PRIORITY="11"
+PRIORITY="10"
 
 # NVIDIA cards
 CLASSIDS="0300 0302"
 VENDORIDS="10de"
-DEVICEIDS=">/var/lib/mhwd/ids/pci/nvidia-575xx.ids"
+DEVICEIDS=">/var/lib/mhwd/ids/pci/nvidia-580xx.ids"
 
 # Amd cards
 CLASSIDS="0300"
@@ -17,20 +17,20 @@ VENDORIDS="1002"
 DEVICEIDS="*"
 
 # Conflicts
-CONFLICTS="nvidia-390x-utils nvidia-390xx-settings libxnvctrl-390xx nvidia-470xx-utils nvidia-470xx-settings libxnvctrl-470xx nvidia-570xx-utils nvidia-570xx-settings nvidia-utils nvidia-settings"
-CONFLICTS_64="lib32-nvidia-390xx-utils lib32-nvidia-470xx-utils lib32-nvidia-570xx-utils lib32-nvidia-utils"
-CONKMOD="nvidia-390xx nvidia-470xx nvidia-570xx nvidia"
-[[ "$(nvidia-recommended-driver)" == "open" ]] && CONKMOD+=" nvidia-575xx"
+CONFLICTS="nvidia-390x-utils nvidia-390xx-settings libxnvctrl-390xx nvidia-470xx-utils nvidia-470xx-settings libxnvctrl-470xx nvidia-utils nvidia-settings"
+CONFLICTS_64="lib32-nvidia-390xx-utils lib32-nvidia-470xx-utils lib32-nvidia-utils"
+CONKMOD="nvidia-390xx nvidia-470xx nvidia"
+[[ "$(nvidia-recommended-driver)" == "open" ]] && CONKMOD+=" nvidia-580xx"
 
 # Conflicts with other mhwd configs
 MHWDCONFLICTS="video*nvidia*"
 MHWDDEPENDS="video-linux"
 
 # Dependencies (nvidia-prime dependency is technically optional, but adds the prime-run command)
-DEPENDS="nvidia-575xx-utils nvidia-575xx-settings nvidia-prime"
-DEPENDS_64="lib32-nvidia-575xx-utils"
-DEPKMOD="nvidia-575xx"
-[[ "$(nvidia-recommended-driver)" == "open" ]] && DEPKMOD="nvidia-575xx-open"
+DEPENDS="nvidia-580xx-utils nvidia-580xx-settings libxnvctrl-580xx nvidia-prime"
+DEPENDS_64="lib32-nvidia-580xx-utils"
+DEPKMOD="nvidia-580xx"
+[[ "$(nvidia-recommended-driver)" == "open" ]] && DEPKMOD="nvidia-580xx-open"
 
 XORGFILE="/etc/X11/mhwd.d/nvidia.conf"
 UDEVFILE="/etc/udev/rules.d/90-mhwd-prime-powermanagement.rules"
