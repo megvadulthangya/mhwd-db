@@ -1,4 +1,4 @@
-name: Sync master and 580 from Manjaro Forgejo
+name: Sync master from Manjaro Forgejo
 
 on:
   schedule:
@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout GitHub repo
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -29,7 +29,7 @@ jobs:
           git remote add forgejo https://code.manjaro.org/applications/mhwd-db.git
 
       - name: Fetch Forgejo with retry
-        uses: nick-fields/retry@v4
+        uses: nick-fields/retry@v3
         with:
           timeout_minutes: 5
           max_attempts: 100
@@ -44,15 +44,9 @@ jobs:
       - name: Sync master branch
         run: |
           git checkout -B master origin/master
-          git merge forgejo/master --no-edit || true
-          git push origin master
-
-      - name: Sync 580 branch (create if missing)
-        run: |
-          if git ls-remote --heads origin 580 | grep -q 580; then
-            git checkout -B 580 origin/580
-          else
-            git checkout -B 580 forgejo/580
+          if ! git merge forgejo/master --no-edit; then
+            echo "::error::Merge conflict occurred while syncing master branch. Manual intervention required."
+            git merge --abort || true
+            exit 1
           fi
-          git merge forgejo/580 --no-edit || true
-          git push origin 580
+          git push origin master
